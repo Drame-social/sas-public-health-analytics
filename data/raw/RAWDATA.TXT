@@ -1,0 +1,6 @@
+01 case 28 exposed
+02 control 29 exposed
+03 case 32 unexposed
+04 control 26 exposed
+05 control 25 unexposed
+06 case 30 exposed
