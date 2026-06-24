@@ -1,0 +1,246 @@
+/* SAS Module 4 */
+
+
+/*
+ * LIBNAME SETUP
+ * Update the path below to your local project data directory.
+ * All SAS datasets (.sas7bdat) are located in the /data folder
+ * at the root of this repository.
+ *
+ * Example (Windows): libname phdata 'C:\Users\YourName\sas-public-health-analytics\data';
+ * Example (Unix/Mac): libname phdata '/home/yourname/sas-public-health-analytics/data';
+ */
+libname phdata './data';
+
+/* Notes Section 4.1 */ 
+
+PROC UNIVARIATE DATA=phdata.mod4;
+	VAR WEIGHT;
+RUN;
+
+DATA TEMP;
+	SET phdata.mod4;
+		IF 0 < WEIGHT <= 135 THEN WT2LEV=0;
+		IF WEIGHT > 135 THEN WT2LEV=1;
+RUN;
+
+PROC FREQ DATA=TEMP;
+	TABLES WT2LEV;
+RUN;
+
+PROC UNIVARIATE DATA=TEMP;
+	VAR WEIGHT;
+	OUTPUT OUT=CUTPTS PCTLPTS= 33.33 66.67  PCTLPRE = P_;
+RUN;
+
+PROC PRINT DATA= CUTPTS; 
+RUN;
+
+DATA TEMP2;
+	SET TEMP;
+		IF WEIGHT > 0 AND WEIGHT <= 126 THEN WT3LEV=0;
+		IF WEIGHT > 126 AND WEIGHT <= 149 THEN WT3LEV=1;
+		IF WEIGHT > 149 THEN WT3LEV=2;
+RUN;
+
+PROC FREQ DATA= TEMP2; 
+	TABLES WT3LEV; 
+RUN;
+
+DATA ONE;
+	SET TEMP2;
+		IF WEIGHT <= 126 THEN WT3LEV2=0;
+		IF WEIGHT > 126 AND WEIGHT <= 149 THEN WT3LEV2=1;
+		IF WEIGHT > 149 THEN WT3LEV2=2;
+		IF WEIGHT = . THEN WT3LEV2=. ;
+RUN;
+
+PROC FREQ DATA=ONE; 
+	TABLES WT3LEV*WT3LEV2/norow nocol nopercent; 
+RUN;
+
+PROC RANK DATA=TEMP2 OUT=TWO GROUPS=3;
+	VAR WEIGHT;
+	RANKS WT3LEV3;
+RUN;
+
+PROC FREQ DATA=TWO; 
+	TABLES WT3LEV3; 
+RUN;
+
+/* Notes Section 4.2 */ 
+
+DATA TEMP3;
+	SET TEMP2;
+
+	BW_OZ = BIRTHLB*16 + BIRTHOZ;
+	BW_GM = BW_OZ*28.35;
+
+	IF BW_GM <=2500 THEN BW_GM1 = 1;
+	IF BW_GM >2500 THEN BW_GM1 = 0;
+	IF BW_GM = . THEN BW_GM1 = .;
+
+	HT_IN = HEIGHTFT*12 + HEIGHTIN; *converts feet and inches to height in inches;
+	WEIGHTKG = WEIGHT * 0.4536; 	*converts weight in pounds to weight in kilograms;
+	HEIGHTM = HT_IN *0.0254; 	    *converts height in inches to height in meters;
+	BMI = WEIGHTKG/HEIGHTM**2;  	*body mass index;
+
+RUN;
+
+PROC PRINT DATA=TEMP3 NOOBS;
+VAR BIRTHLB BIRTHOZ BW_OZ BW_GM BW_GM1 WEIGHT WEIGHTKG HEIGHTFT HEIGHTIN  
+    HT_IN HEIGHTM BMI;
+RUN;
+
+/* Notes Section 4.3 */ 
+
+DATA TEMP4;
+	SET TEMP3;
+	   CALC_AGE = (SURVEYDT - BD)/365.25; *Calculates the exact age at time of interview;
+	   ENTRYAGE = INT(CALC_AGE);  *Gives the integer value of age at time of interview;
+RUN;
+
+PROC PRINT DATA=TEMP4 NOOBS;
+	   VAR STUDYID BD SURVEYDT CALC_AGE ENTRYAGE ;  
+	   FORMAT BD mmddyy10.; *Specifies how you want the dates displayed;
+RUN;
+
+DATA TEMP5;
+	SET TEMP4;
+		STARTYR = YEAR(SURVEYDT);
+RUN;
+
+PROC FREQ DATA=TEMP5;
+	   TABLES STARTYR;
+RUN;
+
+DATA TEMP6;
+	SET TEMP5;
+		TDAY = DATE();
+		FUT = (TDAY - SURVEYDT)/365.25;
+RUN;
+
+DATA FUT2;
+	SET TEMP6;
+		ENDDT = MDY(12,31,2005);
+		FUT2 = (ENDDT - SURVEYDT)/365.25;
+RUN;
+
+PROC PRINT DATA=FUT2;
+	VAR ENDDT SURVEYDT FUT2;
+	FORMAT ENDDT MMDDYY10.;
+RUN;
+
+/* Notes Section 4.4 */ 
+
+DATA TEMP;
+	SET phdata.mod4;
+		IF 0 < WEIGHT <= 135 THEN WT2LEV=0;
+		IF WEIGHT > 135 THEN WT2LEV=1;
+
+		IF WEIGHT GT 0 AND WEIGHT LE 126 THEN WT3LEV=0; 
+		IF WEIGHT GT 126 AND WEIGHT LE 149 THEN WT3LEV=1;
+		IF WEIGHT GT 149 THEN WT3LEV=2;
+
+		BW_OZ = BIRTHLB*16 + BIRTHOZ;
+		BW_GM = BW_OZ*28.35;
+
+		IF BW_GM <=2500 THEN BW_GM1 = 1;
+		IF BW_GM >2500 THEN BW_GM1 = 0;
+		IF BW_GM = . THEN BW_GM1 = .;
+
+		HT_IN = HEIGHTFT*12 + HEIGHTIN;
+		WEIGHTKG = WEIGHT * 0.4536;
+		HEIGHTM = HT_IN *0.0254; 
+		BMI = WEIGHTKG/HEIGHTM**2;
+
+		CALC_AGE = (SURVEYDT - BD)/365.25;
+		ENTRYAGE = INT(CALC_AGE);
+		STARTYR = YEAR(SURVEYDT);
+		TDAY = DATE();
+		FUT = (TDAY � SURVEYDT)/365.25;
+RUN;
+
+/* MOD 4 #1 */
+PROC UNIVARIATE DATA= TEMP6;
+	VAR WEIGHT;
+	OUTPUT OUT=TEMP PCTLPTS= 20 40 60 80 PCTLPRE = P_;
+RUN;
+
+PROC PRINT DATA=TEMP; RUN;
+
+DATA MOD4_1;
+	SET TEMP6;
+		IF WEIGHT GE 0 AND WEIGHT LE 120 THEN WTQUINT=0;
+		IF WEIGHT GT 120 AND WEIGHT LE 130 THEN WTQUINT=1;
+		IF WEIGHT GT 130 AND WEIGHT LE 140 THEN WTQUINT=2;
+		IF WEIGHT GT 140 AND WEIGHT LE 165 THEN WTQUINT=3;
+		IF WEIGHT GT 165 THEN WTQUINT=4;
+RUN;
+
+PROC FREQ data=MOD4_1;
+	TABLES WTQUINT;
+RUN;
+
+/* MOD 4 #2 */
+PROC RANK DATA=MOD4_1 OUT=MOD4_2 GROUPS=5;
+	VAR WEIGHT;
+	RANKS WTQUINT2;
+RUN;
+
+/* MOD 4 #3 a */
+DATA MOD4_3;
+	SET MOD4_2;
+		BMI2 = (WEIGHT/HT_IN**2)*703;
+RUN;
+
+proc freq data = lab3_3; tables bmi2; run;
+
+/* MOD 4 #4 */
+DATA MOD4_4;
+	SET MOD4_3;
+		IF BMI2 GT 0 AND BMI2 LT 18.5 THEN BMILEVEL=0;
+		IF BMI2 GE 18.5 AND BMI2 LT 25 THEN BMILEVEL=1;
+		IF BMI2 GE 25 AND BMI2 LT 30 THEN BMILEVEL=2;
+		IF BMI2 GE 30 THEN BMILEVEL=3;
+RUN;
+
+PROC FREQ data=MOD4_4;
+	TABLES BMILEVEL;
+RUN;
+
+/* MOD 4 #5 */
+DATA MOD4_5;
+	SET MOD4_4;
+		AGE_2005 = INT((MDY(12,31,2005) - BD)/365.25);
+RUN;
+
+PROC UNIVARIATE data=MOD4_5;
+	VAR AGE_2005;
+RUN;
+
+/* MOD 4 #6 */
+data MOD4_6;
+	set MOD4_5;
+		if ill=0 & smoke=0 then ILLSMK = 0;
+		if ill=0 & smoke=1 then ILLSMK = 1;
+		if ill=1 & smoke=0 then ILLSMK = 2;
+		if ill=1 & smoke=1 then ILLSMK = 3;
+run;
+
+proc print data = MOD4_6; 
+	var illsmk ill smoke; 
+run;
+
+/* MOD 4 #7 */
+data MOD4_7;
+	set MOD4_6;
+		if ILL=0 & WEIGHT <=130 then ILLWT = 1;
+		else if ILL=1 & WEIGHT <=150 then ILLWT=2;
+		else ILLWT=3;
+run;
+
+proc print data = MOD4_7; 
+	var illwt ill weight;
+run;
+
