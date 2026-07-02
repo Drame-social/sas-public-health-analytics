@@ -1,4 +1,4 @@
-# SAS Programming for Public Health Analytics
+# Public Health Analytics — SAS
 
 *By Aly Drame, MD, MPH, MBA.* A structured SAS programming curriculum applied to public-health data, from environment setup through reporting and visualization. Datasets are synthetic or built-in SAS library data (Emory AEPI537D course material) — no real patient or program records.
 
