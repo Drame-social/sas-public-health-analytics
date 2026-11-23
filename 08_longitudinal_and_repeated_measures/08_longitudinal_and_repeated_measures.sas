@@ -358,7 +358,7 @@ data screener_data_totals;
 	run;
 
 	ods path reset;
-	ods pdf file = "H:\AEPI537D\Screener_Report_&db..pdf" style = journal  ;
+	ods pdf file = "./outputs/Screener_Report_&db..pdf" style = journal  ;
 	options orientation=portrait ;
 		title "Screener Report";
 		proc print data = screener_data_totals_last noobs label; run;
