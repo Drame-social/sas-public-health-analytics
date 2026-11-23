@@ -13,7 +13,7 @@
 ## Files
 | File | Description |
 |------|-------------|
-| `Module_11_Automation_and_Macros.pdf` | Lecture notes with annotated examples |
+| `NOTES.md` | Study guide with key concepts, worked examples, and practice questions |
 
 ## Note
 No external datasets required — macro examples use inline DATA step data.
