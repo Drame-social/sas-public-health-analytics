@@ -26,7 +26,7 @@ DATALINES;
 RUN;
 
 DATA LESSON2;
-INFILE 'H:\AEPI537D\RAWDATA.TXT';
+INFILE './data/raw/RAWDATA.TXT';
 INPUT STUDYID CACO $ AGE EXPOSURE $;
 RUN;
 
@@ -42,7 +42,7 @@ RUN;
 
 /* phdata.LESSON4 dataset made using the import wizard */
 
-PROC IMPORT OUT= WORK.LESSON5 DATAFILE= "H:\AEPI537D\RAWDAT2.xlsx" 
+PROC IMPORT OUT= WORK.LESSON5 DATAFILE= "./data/raw/RAWDAT2.xlsx" 
             DBMS=xlsx REPLACE;
      		SHEET="Sheet1"; 
      		GETNAMES=YES;
