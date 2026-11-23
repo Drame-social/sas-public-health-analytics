@@ -237,7 +237,7 @@ run;
 
 /* 7.14 � Bonus Example � REVERSE, INPUT, SUBSTR, STRIP */
 
-PROC IMPORT OUT= WORK.bonus7 DATAFILE= "H:\AEPI537D\bonus7.xlsx" 
+PROC IMPORT OUT= WORK.bonus7 DATAFILE= "./data/raw/bonus7.xlsx" 
             DBMS=xlsx REPLACE;
      		SHEET="Sheet1"; 
      		GETNAMES=YES;
