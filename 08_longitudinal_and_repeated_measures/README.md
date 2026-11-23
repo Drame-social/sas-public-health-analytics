@@ -22,14 +22,14 @@
 ## Key SAS Syntax
 ```sas
 /* Count visits per patient */
-PROC SORT DATA=phdata.patients; BY patientid visitdate; RUN;
+PROC SORT DATA=phdata.patients OUT=visits; BY id visdate; RUN;
 
 DATA summary;
-  SET phdata.patients;
-  BY patientid;
+  SET visits;
+  BY id;
   RETAIN visit_count 0;
-  IF FIRST.patientid THEN visit_count = 0;
+  IF FIRST.id THEN visit_count = 0;
   visit_count + 1;
-  IF LAST.patientid THEN OUTPUT;
+  IF LAST.id THEN OUTPUT;
 RUN;
 ```
