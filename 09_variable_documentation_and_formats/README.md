@@ -14,7 +14,7 @@
 | File | Description |
 |------|-------------|
 | `09_variable_documentation_and_formats.sas` | Solution script |
-| `Module_06_Variable_Documentation_and_Formats.pdf` | Lecture notes |
+| `NOTES.md` | Study guide with key concepts, worked examples, and practice questions |
 | `sample_output.rtf` | Example ODS RTF output |
 
 ## Datasets Used (from `/data`)
