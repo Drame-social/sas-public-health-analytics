@@ -13,7 +13,7 @@
 | File | Description |
 |------|-------------|
 | `06_sas_functions.sas` | Solution script with annotated examples |
-| `Module_07_SAS_Functions.pdf` | Lecture notes |
+| `NOTES.md` | Study guide with key concepts, worked examples, and practice questions |
 
 ## Datasets Used (from `/data`)
 `mock_data.sas7bdat`
