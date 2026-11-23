@@ -12,7 +12,7 @@
 ## Files
 | File | Description |
 |------|-------------|
-| `Module_01_SAS_Environment_Setup.pdf` | Full lecture notes and annotated examples |
+| `NOTES.md` | Study guide with key concepts, worked examples, and practice questions |
 
 ## Key Concepts
 - `LIBNAME` statement — links a SAS library reference to a folder path
