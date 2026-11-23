@@ -14,7 +14,7 @@
 | File | Description |
 |------|-------------|
 | `08_longitudinal_and_repeated_measures.sas` | Solution script |
-| `Module_09_Longitudinal_Repeated_Measures.pdf` | Lecture notes |
+| `NOTES.md` | Study guide with key concepts, worked examples, and practice questions |
 
 ## Datasets Used (from `/data`)
 `patients.sas7bdat`, `mod9.sas7bdat`, `flbygroup.sas7bdat`, `patients_part2.sas7bdat`, `screener_data.sas7bdat`
