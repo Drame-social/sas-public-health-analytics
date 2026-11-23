@@ -1,6 +1,6 @@
 # Public Health Analytics — SAS
 
-*By Aly Drame, MD, MPH, MBA.* A structured SAS programming curriculum applied to public-health data, from environment setup through reporting and visualization. Datasets are synthetic or built-in SAS library data (Emory AEPI537D course material) — no real patient or program records.
+*By Aly Drame, MD, MPH, MBA.* A structured SAS programming curriculum applied to public-health data, from environment setup through reporting and visualization. Datasets are educational practice data, built-in SAS library data, or public aggregated data — no real patient or program records.
 
 ---
 
@@ -8,7 +8,7 @@
 
 This repository presents a structured SAS programming curriculum applied to public health datasets. Topics are organized to follow the **natural data analysis workflow** — from environment setup and raw data import through transformation, analysis, reporting, automation, and visualization.
 
-The course material originates from AEPI537D (Introduction to SAS Programming) at the Rollins School of Public Health, Emory University. All datasets are either synthetic or built-in SAS library datasets.
+All datasets are educational practice datasets, built-in SAS library datasets, or public aggregated data (AIDSVu county-level HIV diagnoses, 2016).
 
 ---
 
@@ -49,8 +49,6 @@ sas-public-health-analytics/
 ├── README.md
 ├── data/                                        # All SAS datasets (.sas7bdat)
 │   └── raw/                                     # Raw input files (.txt, .xls)
-├── docs/                                        # Course syllabus
-├── final_exam/                                  # Final exam materials
 │
 ├── 01_environment_setup/                        # SAS interface, libnames, best practices
 ├── 02_data_import_and_creation/                 # Reading raw data, creating permanent datasets
@@ -92,8 +90,8 @@ sas-public-health-analytics/
 | `screener_data.sas7bdat` | Screening questionnaire data | Phase 08 |
 | `tagsetex.sas7bdat` | Tagset example data for ODS reporting | Phase 10 |
 | `aidsvu_2016_newdx_county.sas7bdat` | AIDSVu 2016 new HIV diagnoses by US county | Phase 12 |
-| `final_clin.sas7bdat` | Final exam — clinical outcomes dataset | Final Exam |
-| `final_demo.sas7bdat` | Final exam — demographic dataset | Final Exam |
+| `final_clin.sas7bdat` | Clinical outcomes dataset (used in the Python and R tracks) | Python/R |
+| `final_demo.sas7bdat` | Demographic dataset (used in the Python and R tracks) | Python/R |
 
 ---
 
@@ -143,4 +141,4 @@ Public health data analysis frequently involves messy, multi-source datasets —
 
 ---
 
-*Educational materials from AEPI537D, Rollins School of Public Health, Emory University. All datasets are synthetic or built-in SAS library data. No real patient, provider, or program records are included.*
+*All datasets are educational practice data, built-in SAS library data, or public aggregated data. No real patient, provider, or program records are included.*
