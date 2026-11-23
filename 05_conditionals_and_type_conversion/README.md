@@ -13,7 +13,7 @@
 | File | Description |
 |------|-------------|
 | `05_conditionals_and_type_conversion.sas` | Solution script |
-| `Module_05_Conditionals_and_Type_Conversion.pdf` | Lecture notes |
+| `NOTES.md` | Study guide with key concepts, worked examples, and practice questions |
 
 ## Datasets Used (from `/data`)
 `atlgrades.sas7bdat`
