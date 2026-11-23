@@ -30,7 +30,7 @@ This folder contains all SAS datasets (`.sas7bdat`) used across phases 02–12, 
 | `screener_data.sas7bdat` | 08 | Screening questionnaire responses |
 | `tagsetex.sas7bdat` | 10 | ODS tagset example data |
 | `aidsvu_2016_newdx_county.sas7bdat` | 12 | HIV new diagnoses by US county, 2016 |
-| `final_clin.sas7bdat` | Final Exam | Clinical outcomes |
-| `final_demo.sas7bdat` | Final Exam | Demographic data |
+| `final_clin.sas7bdat` | Python/R tracks | Clinical outcomes |
+| `final_demo.sas7bdat` | Python/R tracks | Demographic data |
 
 All datasets are synthetic or educational — no real patient or program records.
