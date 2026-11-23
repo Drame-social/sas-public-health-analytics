@@ -13,8 +13,7 @@
 | File | Description |
 |------|-------------|
 | `02_data_import_and_creation.sas` | Solution script — all data import and creation examples |
-| `Module_02_Data_Import_and_Creation.pdf` | Lecture notes |
-| `Module_02_Data_Import_Supplement.pdf` | Supplemental worked examples |
+| `NOTES.md` | Study guide with key concepts, worked examples, and practice questions |
 
 ## Datasets Used (from `/data`)
 `RAWDATA.TXT`, `RAWDAT1.xls`, `phase1.sas7bdat`, `phase2.sas7bdat`, `labs.sas7bdat`, `cohort1516.sas7bdat`, `cohort1617.sas7bdat`, `survey.sas7bdat`
