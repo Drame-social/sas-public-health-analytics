@@ -201,7 +201,7 @@ run;
 /* Trick 9 */
 
 ods listing close;
-ods rtf file = 'H:\AEPI537D\sugi30.rtf';
+ods rtf file = './outputs/sugi30.rtf';
 
 proc report data = prep2 nowindows ; /*this proc report is pasted from trick 8*/
 	columns m f goal sex name weight weight=f_weight weight=m_weight;
@@ -246,7 +246,7 @@ ods rtf close;
 
 /* Trick 10 */
 
-ods rtf file = 'H:\AEPI537D\sugi30.rtf';
+ods rtf file = './outputs/sugi30.rtf';
 
 proc report data = prep2(where=(age lt 15)) nowindows        /*this proc report is pasted from trick 8*/
 	style(column) = {font_face='Arial'}
