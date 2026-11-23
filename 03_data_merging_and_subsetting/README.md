@@ -15,7 +15,7 @@
 | `03_data_merging_and_subsetting.sas` | Solution script |
 | `03_dataset_creation_examples.sas` | Additional dataset creation code |
 | `03_dataset_creation_examples_v2.sas` | Alternate version with comments |
-| `Module_03_Merging_and_Subsetting.pdf` | Lecture notes |
+| `NOTES.md` | Study guide with key concepts, worked examples, and practice questions |
 
 ## Datasets Used (from `/data`)
 `phase1.sas7bdat`, `phase2.sas7bdat`, `labs.sas7bdat`, `mod3lab.sas7bdat`
