@@ -13,7 +13,7 @@
 | File | Description |
 |------|-------------|
 | `04_categorical_variables_and_dates.sas` | Solution script |
-| `Module_04_Categorical_Variables_and_Dates.pdf` | Lecture notes |
+| `NOTES.md` | Study guide with key concepts, worked examples, and practice questions |
 
 ## Datasets Used (from `/data`)
 `mod4.sas7bdat`
