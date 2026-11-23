@@ -14,19 +14,19 @@ libname phdata './data';
 * Notes Section 10.1 ;
 
 PROC EXPORT DATA= sashelp.class
-    OUTFILE= 'H:\AEPI537D\class.xlsx'
+    OUTFILE= './outputs/class.xlsx'
     DBMS=EXCEL REPLACE;
     SHEET="class";
 RUN; 
 
 proc export data=sashelp.class(where=(sex='M'))
-             outfile="H:\AEPI537D\classmulti.xlsx"
+             outfile="./outputs/classmulti.xlsx"
              dbms=excel replace label;
    			sheet="Male";
 run;
 
 proc export data=sashelp.class(where=(sex='F'))
-             outfile="H:\AEPI537D\classmulti.xlsx"
+             outfile="./outputs/classmulti.xlsx"
              dbms=excel replace label;
    			sheet="Female";
 run;
@@ -51,12 +51,12 @@ data tagsetex_fmt;
 run;
 
 PROC EXPORT DATA= tagsetex_fmt
-    OUTFILE= 'H:\AEPI537D\tagsetex_fmt.xlsx'
+    OUTFILE= './outputs/tagsetex_fmt.xlsx'
     DBMS=EXCEL REPLACE;
     SHEET="tagsetex_fmt";
 RUN;
 
-ods Tagsets.ExcelXP file='H:\AEPI537D\tagsetex_fmt.xml';
+ods Tagsets.ExcelXP file='./outputs/tagsetex_fmt.xml';
 
 	proc print data=tagsetex_fmt noobs; run; 
 
@@ -77,17 +77,17 @@ proc print data= check_contents2 noobs; var name label; run;
 /* Mod 10 #1 */
 
 proc export data=sashelp.iris(where=(species='Setosa'))
-             outfile="H:\AEPI537D\irismulti.xlsx"
+             outfile="./outputs/irismulti.xlsx"
              dbms=excel replace label;
    			sheet="Setosa";
 run;
 proc export data=sashelp.iris(where=(species='Versicolor'))
-             outfile="H:\AEPI537D\irismulti.xlsx"
+             outfile="./outputs/irismulti.xlsx"
              dbms=excel replace label;
    			sheet="Versicolor";
 run;
 proc export data=sashelp.iris(where=(species='Virginica'))
-             outfile="H:\AEPI537D\irismulti.xlsx"
+             outfile="./outputs/irismulti.xlsx"
              dbms=excel replace label;
    			sheet="Virginica";
 run;
