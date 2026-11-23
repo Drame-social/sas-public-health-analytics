@@ -12,7 +12,7 @@
 ## Files
 | File | Description |
 |------|-------------|
-| `Module_12_Visualization_and_Mapping.pdf` | Lecture notes with examples |
+| `NOTES.md` | Study guide with key concepts, worked examples, and practice questions |
 
 ## Datasets Used (from `/data`)
 `aidsvu_2016_newdx_county.sas7bdat` — AIDSVu 2016 new HIV diagnoses by US county  
