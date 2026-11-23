@@ -13,7 +13,7 @@
 | File | Description |
 |------|-------------|
 | `07_arrays_and_variable_naming.sas` | Solution script |
-| `Module_08_Arrays_and_Variable_Naming.pdf` | Lecture notes |
+| `NOTES.md` | Study guide with key concepts, worked examples, and practice questions |
 
 ## Datasets Used (from `/data`)
 `mod8_a.sas7bdat`, `mod8_b.sas7bdat`, `mod8_c.sas7bdat`, `mod8_d.sas7bdat`, `pets.sas7bdat`
