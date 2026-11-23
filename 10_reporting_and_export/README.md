@@ -14,7 +14,7 @@
 |------|-------------|
 | `10_reporting_and_export.sas` | Solution script |
 | `10_mwsug_reporting_examples.sas` | Advanced ODS examples from MWSUG 2010 article |
-| `Module_10_Reporting_and_Export.pdf` | Lecture notes |
+| `NOTES.md` | Study guide with key concepts, worked examples, and practice questions |
 | `MWSUG_2010_Advanced_Reporting.pdf` | MWSUG 2010 article on advanced ODS reporting |
 
 ## Datasets Used (from `/data`)
