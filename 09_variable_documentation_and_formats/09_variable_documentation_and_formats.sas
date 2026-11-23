@@ -70,7 +70,7 @@ PROC FREQ DATA=TEMP2;
 	FORMAT ENTRYAGE AGEFMT.;
 RUN;
 
-LIBNAME LIBRARY 'H:\AEPI537D';    
+LIBNAME LIBRARY './data';    
 
 PROC FORMAT LIBRARY = LIBRARY; 
 
@@ -89,7 +89,7 @@ DATA phdata.mod6_fmt;
 	FORMAT SEX1 GENDERF. SMOKE SMOKERF. ;
 RUN;
 
-LIBNAME LIBRARY 'H:\AEPI537D';
+LIBNAME LIBRARY './data';
 
 PROC FREQ DATA=phdata.mod6_rev;
 	TABLES SEX1*SMOKE;
@@ -101,7 +101,7 @@ RUN;
 
 /* Notes Section 6.3 */
 
-ODS RTF FILE='H:\AEPI537D\SAMPLE.RTF';
+ODS RTF FILE='./outputs/SAMPLE.RTF';
 PROC FREQ DATA=TEMP2;
 	TABLES ENTRYAGE*SMOKE;
 	FORMAT ENTRYAGE AGEFMT.;
@@ -110,7 +110,7 @@ ODS RTF CLOSE;
 
 
 ODS NORESULTS;
-ODS PDF FILE = 'H:\AEPI537D\SAMPLE.PDF';
+ODS PDF FILE = './outputs/SAMPLE.PDF';
 PROC FREQ DATA=phdata.mod6_fmt;
 	TABLES SEX1*SMOKE;
 RUN;
@@ -120,7 +120,7 @@ ODS PDF CLOSE;
 
 /*Proc template; list styles; RUN;*/
 
-ODS PDF FILE = 'H:\AEPI537D\SAMPLE.PDF' style = journal;
+ODS PDF FILE = './outputs/SAMPLE.PDF' style = journal;
 PROC FREQ DATA=phdata.mod6_fmt;
 	TABLES SEX1*SMOKE;
 RUN;
@@ -189,7 +189,7 @@ data _NULL_;
 	call symput ("db", put(today(), date9.));
 run;
 
-ods pdf file = "H:\AEPI537D\ANOTHERSAMPLE_&db..pdf" style = journal ;
+ods pdf file = "./outputs/ANOTHERSAMPLE_&db..pdf" style = journal ;
 		PROC PRINT DATA = DBP3; RUN;
 ods pdf close;
 
@@ -216,7 +216,7 @@ PROC FORMAT;
 RUN;
 
 /* MOD 6 #2 */
-ODS RTF FILE='H:\AEPI537D\MOD6Q2.RTF';
+ODS RTF FILE='./outputs/MOD6Q2.RTF';
 	proc freq data=TEMPLAB;
 	tables ENTRYAGE MARITAL1;
 	format ENTRYAGE AGEf. MARITAL1 MARITALf.;
